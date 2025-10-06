@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+void area(int l , int b , char c ){
+    if(c == 'r'){
+        int res = l * b;
+        cout<<"area of the rectangle : "<<res<<endl;
+    }
+    else if(c == 't'){
+        int res = (l * b) / 2;
+        cout<<"area of the triangle : "<<res<<endl;
+    }
+    else if(c == 'c'){
+        int res = 3.14 * l * b;
+        cout<<"area of circle: "<<setprecision(2)<<res<<endl;
+    }
+    else{
+        cout<<"invalid shape"<<endl;
+    }
+}
+int main(){
+    int l , b ;
+    char s ;
+    cin >> l >> b >> s;
+    area(l , b , s);
+    return 0;
+}
