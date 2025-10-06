@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    string text, pattern;
+    getline(cin, text);
+    getline(cin, pattern);
+    int len1 = text.length();
+    int len2 = pattern.length();
+    int i , j , k = 0;
+    for (int i = 0; i < len1 ; i++) { 
+        for (j = 0; j < len2; j++) {
+            if (text[i + j] != pattern[j]) {
+            break;
+        }
+    }
+    if (j == len2) {
+        k++;
+    }
+    }
+    cout << k << endl;
+    return 0;
+}
