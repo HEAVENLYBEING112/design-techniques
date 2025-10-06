@@ -1,0 +1,32 @@
+//range query day 1 session 1 
+#include<iostream>
+#include<vector>
+using namespace std;
+int main(){
+    int N , Q ;
+    cin >> N >> Q ;
+    vector<int>arr(N);
+    for(int i = 0 ; i < N ; i++){
+        cin >> arr[i];
+    }
+    for(int q = 0  ; q < Q ; q++){
+        char type;
+        cin >> type;
+        if(type == 'Q'){
+            int L , R;
+            cin >> L >> R;
+            int mn = arr[L];
+            for(int i = L + 1 ; i <= R ; i++){
+                if(arr[i] > mn){
+                    mn = arr[i];
+                }
+            }
+            cout << mn << endl; 
+        }else if(type == 'U'){
+            int idx , val;
+            cin >> idx >> val;
+            arr[idx] = val;
+        }
+    }
+    return 0 ;
+}
