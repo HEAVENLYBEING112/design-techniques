@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int V;  // for getting vertices
+    cin >> V;
+    vector<vector<int>>graph(V , vector<int>(V));
+    for(int i = 0 ; i < V ; i++){
+        for(int j = 0 ; j < V ; j++){
+            cin >> graph[i][j];
+        }
+    }
+    int src;    //for getting source
+    cin >> src;
+    vector<int> dist(V , INT_MAX);
+    vector<bool> visited(V , false);
+    dist[src] = 0;
+    for(int cnt = 0 ; cnt < V - 1 ; cnt++){
+        int u = -1 ; // - 1 indicates not visited
+        for(int i = 0; i < V ; i++) 
+        if(!visited[i] && (u == -1 || dist[i] < dist[u])) //Vertex i has not been processed yet and Vertex i smaller distance than u
+            u = i ;
+        visited[u] = true ;
+    for(int v = 0 ; v < V ; v++){
+        if(graph[u][v] && !visited[v] && dist[u] != INT_MAX && dist[v] > dist[u] + graph[u][v]){// int max kuda not equals as int max na infinite a mean pannuthu
+         dist[v] = dist[u] + graph[u][v]; 
+        }
+    }
+    }
+    cout<<"vertex \t distance from the source"<<endl;// intha text la \t term space kaga use pandrom
+    for(int i = 0 ; i < V ; i++){
+        cout<< i << " \t\t "<<dist[i]<<endl;
+    }
+    return 0;
+}
