@@ -1,0 +1,36 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+class Minheap{
+  public:
+  vector<int> arr;
+  void heapifyup(int index){
+      int parentindex = (index - 1)/2;
+      while(index > 0 && arr[parentindex] > arr[index]){   //change<> to adjust btw max and min
+          int temp = arr [parentindex];
+          arr[parentindex] = arr[index];
+          arr[index] = temp;
+          temp = parentindex;
+          parentindex = (index - 1)/2;
+      }
+  }
+  void create (int num){
+      arr.push_back(num);
+      heapifyup(arr.size() - 1);
+  }
+  void display(){
+      for(int i = 0 ; i < arr.size() ; i++){
+          cout<<arr[i];
+      }
+  }
+};
+int main(){
+    Minheap heap;
+    int n , num ;
+    cin >> n;
+    for(int i = 0 ; i < n ; i++){
+        cin >> num ;
+        heap.create(num);
+    }
+    heap.display();
+}
