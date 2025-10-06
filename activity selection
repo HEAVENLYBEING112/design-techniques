@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+	int n;
+	cin>>n;
+	vector<int> start;
+	vector<int> end;
+	for(int i=0; i<n; i++) {
+		int data;
+		cin>>data;
+		start.push_back(data);
+	}
+	for(int i=0; i<n; i++) {
+		int data;
+		cin>>data;
+		end.push_back(data);
+	}
+	int prev=end[0];
+	cout<<0<<" ";
+	for(int i=1; i<n; i++) {
+		if(prev<=start[i]) {
+			cout<<i<<" ";
+			prev=end[i];
+		}
+	}
+}
