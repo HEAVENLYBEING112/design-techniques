@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+string except(string str,int left,int right){
+    while(left>=0 && right<str.length() && str[left]==str[right]){
+        left--;
+        right++;
+        
+    }
+    return str.substr(left+1,right-left-1);
+}
+int main(){
+    string str;
+    string res="";
+    cin>>str;
+    for(int i=0;i<str.length();i++){
+        string odd=except(str,i,i);
+        string even=except(str,i,i+1);
+        if(odd.length()>res.length()){
+            res=odd;
+        }
+        if(even.length()>res.length()){
+            res=even;
+        }
+    }
+    cout<<res;
+}
+
+//i/p:abbaajnnooijvniow
+//o/p:abba
