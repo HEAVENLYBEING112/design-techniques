@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+void TOH(int plates, char sour, char dest, char auxi) {
+    if (plates == 1) {
+        cout << "Move disk 1 from " << sour << " to " << dest << endl;
+        return;
+    } else {
+        TOH(plates - 1, sour, auxi, dest);
+        cout << "Move disk " << plates << " from " << sour << " to " << dest << endl;
+        TOH(plates - 1, auxi, dest, sour);
+    }
+}
+int main() {
+    int plates = 3;  // Number of disks
+    cout << "Tower of Hanoi with " << plates << " disks:\n";
+    TOH(plates, 'S', 'D', 'A');
+    return 0;
+}
