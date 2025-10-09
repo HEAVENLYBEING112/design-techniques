@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+int lcs(string s , string rev){
+    int n = s.length();
+    int m = rev.length();
+    vector<vector<int>>dp(n + 1 , vector<int>(m + 1 , 0));
+    for(int i = 0 ; i < n ; i++){
+        for(int j = 0 ; j < m ; j++){
+            if(s[i - 1] == rev[j - 1]){
+                dp[n][m] = 1+dp[i - 1][j - 1];
+            }else{
+                dp[n][m] = min(dp[i - 1][j] ,dp[i][j - 1]);
+            }
+        }
+    }
+    return dp[n][m];
+}
+int main(){
+    string s;
+    cin >> s; 
+    string rev = s;
+    reverse(rev.begin(),rev.end());
+    cout<<lcs(s , rev);
+}
