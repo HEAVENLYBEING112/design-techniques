@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+int moves_X[8] = {2, 1, -1, -2, -2, -1, 1, 2}; 
+int moves_Y[8] = {1, 2, 2, 1, -1, -2, -2, -1};
+double knightpropablity(int n , int  k ,int r , int c){
+    if(r < 0 || r >= n || c < 0 || c >= n){
+        return 0.0;
+    }
+    if(k == 0)
+    return 1.0;
+    double propb = 0.0;
+    for(int m = 0 ; m < 8 ; m++){
+        int newX = r  + moves_X[m];
+        int newY = c  + moves_Y[m];
+        propb += knightpropablity(n , k - 1 , newX ,newY )/8.0;
+    }
+    return propb;
+}
+int main (){
+    int n , k , r , c;
+    cin >> n >> k >> r >> c ;
+    double result = knightpropablity(n , k , r, c);
+    cout <<fixed <<setprecision(5) << result << endl;
+    return 0;
+}
