@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    vector<int> weight ;
+    vector<int> value ;
+    int amt;
+    bool found = true;
+    int n = 0;
+    while(found){
+        int data1 , data2;
+        cin >> data1 >> data2;
+        if(data1 == - 1 || data2 == - 1 ){
+            break;
+        }
+        weight.push_back(data1);
+        value.push_back(data2);
+        n++;
+    }
+    cin>>amt;
+    double prof[n];
+    for(int i = 0 ; i < n ; i++){
+        prof[i] = (double)value[i]/weight[i];
+    }
+    for(int i = 0 ; i < n ; i++){
+        for(int j = i + 1 ; j < n ; j++){
+            if(prof[i]<prof[j]){
+                swap(prof[i],prof[j]);
+                swap(weight[i],weight[j]);
+                swap(value[i],value[j]);
+            }
+        }
+    }
+    double sum = 0.0;
+    double fraction;
+    for(int i = 0 ; i < n ; i++){
+        if(amt > weight[i]){
+            sum += value[i];
+            amt = amt - weight[i];
+        }else{
+            sum += amt * prof[i];
+            fraction = (double)amt/weight[i];
+            fraction = fraction * 100;
+            break;
+        }
+    }
+    cout<<"the maxim value of current list is : "<<fixed<<setprecision(2)<<sum<<endl;
+    cout<<fraction;
+}
