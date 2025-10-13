@@ -5,24 +5,24 @@ int main(){
     vector<int> value ;
     int amt;
     bool found = true;
-    int n = 0;
+    int n = 0;   
     while(found){
-        int data1 , data2;
+        int data1 , data2;         // for initially getting values for value and weigth
         cin >> data1 >> data2;
         if(data1 == - 1 || data2 == - 1 ){
             break;
         }
-        weight.push_back(data1);
+        weight.push_back(data1);   // to store the got value in the veght and value variables
         value.push_back(data2);
         n++;
     }
     cin>>amt;
-    double prof[n];
+    double prof[n];                 // variable to store profit per unit  for ex 100 = value ; 5 = weight ; prof = 100 / 5 = 20
     for(int i = 0 ; i < n ; i++){
         prof[i] = (double)value[i]/weight[i];
     }
     for(int i = 0 ; i < n ; i++){
-        for(int j = i + 1 ; j < n ; j++){
+        for(int j = i + 1 ; j < n ; j++){  // j = i + 1 is assigned bcoz it constantly in the position next to i as it will be helpfull in identifying value with great profit
             if(prof[i]<prof[j]){
                 swap(prof[i],prof[j]);
                 swap(weight[i],weight[j]);
@@ -34,15 +34,15 @@ int main(){
     double fraction;
     for(int i = 0 ; i < n ; i++){
         if(amt > weight[i]){
-            sum += value[i];
-            amt = amt - weight[i];
+            sum += value[i];     // to add the high profit value in the sum variable
+            amt = amt - weight[i];   // to subract the used up weight(amt) from intitial value
         }else{
             sum += amt * prof[i];
-            fraction = (double)amt/weight[i];
+            fraction = (double)amt/weight[i];   // if the remaining amt dont suffice the req amount prof is used buy fraction of values
             fraction = fraction * 100;
             break;
         }
     }
-    cout<<"the maxim value of current list is : "<<fixed<<setprecision(2)<<sum<<endl;
+    cout<<"the maximum value of current list is : "<<fixed<<setprecision(2)<<sum<<endl;
     cout<<fraction;
 }
